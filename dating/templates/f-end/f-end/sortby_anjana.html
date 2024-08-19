@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .header {
+            background-color: #5e1043;
+            padding: 10px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .container {
+            background-color: white;
+            margin: 20px;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .filter-group {
+            margin-bottom: 20px;
+        }
+        .filter-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .filter-group input[type="text"], .filter-group select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .reset-icon {
+            float: right;
+            cursor: pointer;
+        }
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 -1px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+        .bottom-nav img {
+            width: 30px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .button {
+            width: 48%;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .cancel-button {
+            background-color: #f14e4e;
+            color: white;
+        }
+        .apply-button {
+            background-color: #5e1043;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Filter</h1>
+</div>
+
+<div class="container">
+    <div class="filter-group">
+        <label for="sort-by">Sort By</label>
+        <div id="sort-by">
+            <div>Newest Members <span class="reset-icon">↻</span></div>
+            <div>Last Active <span class="reset-icon">↻</span></div>
+            <div>Distance <span class="reset-icon">↻</span></div>
+            <div>Popularity <span class="reset-icon">↻</span></div>
+            <div>Age <span class="reset-icon">↻</span></div>
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <label for="filter-by">Filter By</label>
+        <div id="filter-by">
+            <div>Gender <span class="reset-icon">↻</span></div>
+            <div>Location <span class="reset-icon">↻</span></div>
+            <div>Interests/Hobbies <span class="reset-icon">↻</span></div>
+            <div>Languages Spoken <span class="reset-icon">↻</span></div>
+            <div>Relationship Goals <span class="reset-icon">↻</span></div>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <div class="button cancel-button">Cancel</div>
+        <div class="button apply-button">Apply</div>
+    </div>
+</div>
+
+<div class="bottom-nav">
+    <img src="home_icon.png" alt="Home">
+    <img src="settings_icon.png" alt="Settings">
+    <img src="color_palette_icon.png" alt="Color Palette">
+    <img src="profile_icon.png" alt="Profile">
+</div>
+
+</body>
+</html>

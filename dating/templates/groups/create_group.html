@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block content %}
+    <style>
+        .container-fluid {
+            
+            font-family: Poppins, sans-serif;
+            padding-bottom: 100px; 
+        }
+
+        .group-description {
+            font-size: 20px;
+            font-weight: bold;
+            color: #000;
+            margin: 20px 0;
+        }
+
+        .group-admin {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .group-admin img {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+        }
+
+        .invited-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .invited-members .member img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+        }
+
+        .create-btn {
+            background-color: #6b2d83;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 30px;
+            border: none;
+            width: calc(100% - 90px); /* Adjust width to fit the container with padding */
+            margin: 30px 60px 0; /* Align the button with a margin at the bottom */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional shadow for emphasis */
+        }
+
+        .create-group-title {
+             /* Optional: adds space between the title and right edge */
+            font-weight: bold;
+            font-size: 24px; /* Adjust as needed */
+        }
+
+        .back-link {
+            color: #6b2d83; /* Color for the back arrow */
+            font-size: 20px;
+            text-decoration: none;
+        }
+
+        .container-custom {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
+        }
+    </style>
+
+    <div class="container-fluid">
+        <div class="container container-custom">
+          
+            <h3 class="create-group-title mt-3 text-center"> Create Group </h3>
+
+            <div>
+                <h3>Group Name</h3>
+                <h5 style="color: grey;">Group Description</h5>
+                <div class="group-description text-center"><h1>Make a Group call with friends</h1></div>
+                <p>Group Admin</p>
+                <div class="group-admin">
+                    <img src="https://via.placeholder.com/60" alt="Rashid Khan">
+                    <div>
+                        <p><strong>Rashid Khan</strong></p>
+                    </div>
+                </div>
+                <p>Invited Members</p>
+                <div class="invited-members">
+                    <div class="member">
+                        <img src="https://via.placeholder.com/80" alt="Member 1">
+                    </div>
+                    <div class="member">
+                        <img src="https://via.placeholder.com/80" alt="Member 2">
+                    </div>
+                    <div class="member">
+                        <img src="https://via.placeholder.com/80" alt="Member 3">
+                    </div>
+                    <div class="member">
+                        <img src="https://via.placeholder.com/80" alt="Member 4">
+                    </div>
+                    <div class="member">
+                        <img src="https://via.placeholder.com/80" alt="Member 5">
+                    </div>
+                    <div class="member">
+                        <img src="https://via.placeholder.com/80" alt="Add More">
+                    </div>
+                </div>
+            </div>
+
+            <button class="create-btn">Create</button>
+        </div>
+        {% include "components/footer_nav.html" %}
+    </div>
+{% endblock content %}

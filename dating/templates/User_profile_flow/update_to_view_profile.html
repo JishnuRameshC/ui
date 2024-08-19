@@ -1,0 +1,322 @@
+{% extends 'shared/base.html' %}
+
+{% block meta %}
+  <title>Profile Slider and Map</title>
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #5a2d82;
+        padding-bottom: 60px;
+    }
+
+    .profile-card {
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+        margin: 20px auto;
+        width: 500px;
+        
+    }
+    .blurred-profile-card{
+        filter: blur(8px);
+        transition: filter 0.3s ease-in-out;
+    }
+    .unblurred-profile-card {
+        filter: none;
+        transition: filter 0.3s ease-in-out;
+    }
+    .profile-header {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        height: 450px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 20px;
+    }
+    .profile-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.4);
+    }
+    .profile-header .back-btn, .profile-header .distance {
+        position: absolute;
+        top: 20px;
+        z-index: 1;
+        color: white;
+        background: transparent;
+        text-decoration: none;
+    }
+    .profile-header .back-btn {
+        left: 20px;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .profile-header .distance {
+        right: 20px;
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 50px;
+        padding: 10px 20px;
+    }
+    .profile-header h1, .profile-header h2 {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+    }
+    .profile-header h1 {
+        font-size: 36px;
+        margin-bottom: 10px;
+        color: #fff;
+        text-align: center;
+    }
+    .profile-header h2 {
+        font-size: 20px;
+        color: #ddd;
+        text-align: center;
+    }
+    .match-btn {
+        position: relative;
+        z-index: 1;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #8237f5;
+        border: none;
+        color: white;
+        padding: 15px 30px;
+        border-radius: 50px;
+        font-size: 16px;
+        margin-top: 5px;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .match-btn i {
+        margin-left: 10px;
+        justify-content: center;
+    }
+    .profile-content {
+        padding: 20px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+    .profile-content h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+    .interest-badges span {
+        background-color: #f0f0f0;
+        border-radius: 20px;
+        padding: 5px 10px;
+        margin: 5px;
+        display: inline-block;
+    }
+    .actions {
+        display: flex;
+        justify-content: space-around;
+        padding: 20px 0;
+    }
+    .actions button {
+        border: none;
+        background-color: transparent;
+        font-size: 24px;
+        color: #8237f5;
+    }
+    .actions button.like {
+        color: #e91e63;
+    }
+    .carousel-vertical {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        z-index: 2;
+    }
+    .carousel-vertical img {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        margin-bottom: 5px;
+        cursor: pointer;
+        opacity: 0.7;
+    }
+    .carousel-vertical img.active {
+        border: 2px solid white;
+        opacity: 1;
+    }
+    /* Centered modal content */
+    .modal-dialog {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+    .modal-content {
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+    }
+    .modal-backdrop {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .upgrade-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        max-width: 340px;
+        padding: 25px 20px;
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        position: relative;
+        z-index: 1;
+    }
+    .upgrade-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.2);
+    }
+    .upgrade-text {
+        font-size: 1.90rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 30px;
+        line-height: 2.5;
+    }
+    .btn-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .btn-upgrade,
+    .btn-home {
+        background-color: #5C105D;
+        color: #fff;
+        border-radius: 40px;
+        padding: 12px 24px;
+        border: none;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0px 5px 15px rgba(92, 16, 93, 0.4);
+        text-decoration: none;
+        flex: 1;
+        text-align: center;
+        white-space: nowrap;
+    }
+    .btn-upgrade:hover,
+    .btn-home:hover {
+        background-color: #4e0a4d;
+        transform: translateY(-3px);
+        box-shadow: 0px 8px 20px rgba(92, 16, 93, 0.5);
+    }
+    .modal {
+        pointer-events: none;
+    }
+    .modal-dialog {
+        pointer-events: auto;
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="profile-card blurred-profile-card">
+    <div class="profile-header" id="profileHeader" style="background-image: url('https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');">
+        <a href="#" class="back-btn">
+            <i class="fas fa-arrow-left fa-1x"></i>
+        </a>
+        <div class="distance">
+            <i class="fas fa-map-marker-alt"></i> 2.5 km
+        </div>
+        <div class="profile-info">
+            <h1>Alfredo Calzoni, 20</h1>
+            <h2>Hamburg, Germany</h2>
+            <button class="match-btn">
+                Match
+                <i class="fas fa-heart"></i>
+            </button>
+        </div>
+        <div class="carousel-vertical">
+            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Image 1" class="active" onclick="changeImage(this)">
+            <img src="https://picsum.photos/200/300/?blur" alt="Image 2" onclick="changeImage(this)">
+            <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Image 3" onclick="changeImage(this)">
+        </div>
+    </div>
+    <div class="profile-content">
+        <h3>About</h3>
+        <p>A good listener. I love having a good talk to know each other’s side 😍.</p>
+        <h3>Interest</h3>
+        <div class="interest-badges">
+            <span>🌳 Nature</span>
+            <span>✈️ Travel</span>
+            <span>✍️ Writing</span>
+        </div>
+    </div>
+    <div class="actions">
+        <button class="dislike"><i class="fas fa-times"></i></button>
+        <button class="star"><i class="fas fa-star"></i></button>
+        <button class="like"><i class="fas fa-heart"></i></button>
+        <button class="message"><i class="fas fa-comment"></i></button>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="popupModal" tabindex="-1" aria-labelledby="popupModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content upgrade-card">
+            <p class="upgrade-text">Upgrade to view</p>
+            <div class="btn-container">
+                <button class="btn-upgrade" id="upgradeBtn">Upgrade</button>
+                <a href="home.html" class="btn-home">Go to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block scripts %}
+<script>
+    function changeImage(element) {
+        const profileHeader = document.getElementById('profileHeader');
+        const images = document.querySelectorAll('.carousel-vertical img');
+        images.forEach(img => img.classList.remove('active'));
+        element.classList.add('active');
+        profileHeader.style.backgroundImage = `url('${element.src}')`;
+    }
+</script>
+<script>
+    // Show modal on page load
+    window.onload = function () {
+        const myModal = new bootstrap.Modal(document.getElementById('popupModal'));
+        myModal.show();
+    };
+
+    // Remove blur on upgrade
+    document.getElementById("upgradeBtn").addEventListener("click", function () {
+        document.getElementById("background-content").style.filter = "none";
+        const myModalEl = document.getElementById('popupModal');
+        const modalInstance = bootstrap.Modal.getInstance(myModalEl);
+        modalInstance.hide();
+    });
+</script>     
+{% endblock scripts %}
+

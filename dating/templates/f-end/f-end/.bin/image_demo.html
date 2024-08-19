@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .profile-card {
+            position: relative;
+            width: 350px;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            color: white;
+            text-align: left;
+        }
+        .status-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .action-buttons {
+            position: absolute;
+            top: 50%;
+            right: 1px;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 50px 1px 1px 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .action-buttons .btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 18px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .profile-info {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+        .profile-info h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .profile-info p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container d-flex justify-content-center mt-5">
+    <div class="profile-card">
+        <img src="https://thewowstyle.com/wp-content/uploads/2015/01/nature-images-6.jpg" alt="Background" style="width: 100%; height: 100%; object-fit: cover;">
+        <span class="status-badge">Online</span>
+        <div class="action-buttons">
+            <button class="btn">
+                <i class="fas fa-thumbs-up"></i>
+            </button>
+            <button class="btn">
+                <i class="fas fa-comment"></i>
+            </button>
+            <button class="btn">
+                <i class="fas fa-info"></i>
+            </button>
+        </div>
+        <div class="profile-info">
+            <h2>Sithara Nair</h2>
+            <p>F26YRS</p>
+            <p>DEVELOPER, HYDERABAD</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

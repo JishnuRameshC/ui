@@ -1,0 +1,248 @@
+{% extends 'shared/base.html' %}
+
+{% block meta %}
+<title>Story View</title>
+
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+        background-color: #000000;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    .story-container {
+        position: relative;
+        width: 100%;
+        height: 100vh; /* Full height for mobile */
+        background-color: #333;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 350px; /* Default size for larger screens */
+    }
+    .story-header {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.6);
+        position: relative;
+        /* Ensure flex items are properly aligned */
+    }
+    .story-header .back-button {
+        font-size: 20px;
+        margin-right: 10px; /* Space between back button and profile picture */
+        cursor: pointer;
+    }
+    .story-header img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+        border: 2px solid #fff;
+    }
+    .story-header .online-status {
+        width: 10px;
+        height: 10px;
+        background-color: #2dff0b;
+        border-radius: 50%;
+        position: absolute;
+        top: 40px;
+        left: 60px;
+        border: 2px solid #fff;
+    }
+    .story-header .header-content {
+        display: flex;
+        align-items: center;
+        flex: 1; /* Take up remaining space */
+    }
+    .story-header .header-content div {
+        margin-left: 10px;
+    }
+    .progress-bar {
+        position: absolute;
+        top: 0; /* Remove gap by setting to 0 */
+        left: 0;
+        height: 5px;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+    }
+    .progress-bar span {
+        display: block;
+        height: 100%;
+        background-color: #ff007f;
+        width: 0%;
+    }
+    .story-image-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .story-image {
+        width: 100%;
+        height: 100%; /* Full height of the container */
+        object-fit: cover; /* Cover the container */
+        cursor: pointer;
+    }
+    .story-controls {
+        position: absolute;
+        top: 10px; /* Adjusted to be at the top */
+        right: 10px; /* Positioned at the right side */
+        display: flex;
+        align-items: center;
+        color: #fff;
+    }
+    .story-controls i {
+        font-size: 20px;
+        margin-left: 15px; /* Margin to the left for separation */
+        cursor: pointer;
+    }
+    .story-controls p {
+        margin: 0;
+        font-size: 16px;
+    }
+    .comment-section {
+        position: absolute;
+        bottom: 0; /* Position at the bottom of the container */
+        width: 100%;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center; /* Center vertically */
+    }
+    .comment-section textarea {
+        flex: 1; /* Take up remaining space */
+        height: 40px;
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+        background-color: #333;
+        color: #fff;
+        margin-right: 10px; /* Space between textarea and button */
+    }
+    .comment-section button {
+        background-color: #561251;
+        border: none;
+        color: #fff;
+        padding: 10px 20px; /* Added padding for better appearance */
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .comment-section button:hover {
+        background-color: #7a2578;
+    }
+
+    .text-overlay {
+        position: absolute;
+        bottom: 10px; /* Adjust as needed */
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+        font-size: 20px;
+        background: rgba(0, 0, 0, 0.5); /* Background with opacity */
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    /* Media query for larger screens */
+    @media (min-width: 768px) {
+        .story-container {
+            height: auto; /* Reset height for larger screens */
+            max-width: 60%; /* Use col-6 width */
+            margin: 0 auto; /* Center the container */
+        }
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center h-100">
+    <div class="story-container">
+        <div class="story-header">
+            <i class="fas fa-arrow-left back-button"></i>
+            <img src="https://cubanvr.com/wp-content/uploads/2023/07/ai-image-generators.webp" alt="Profile Picture">
+            <div class="header-content">
+                <div>
+                    <h5 class="m-0">Stone Stellar</h5>
+                    <p class="m-0">Online</p>
+                </div>
+                <div class="online-status"></div>
+            </div>
+        </div>
+        <div class="progress-bar">
+            <span id="progress"></span>
+        </div>
+        <div class="story-image-container" id="storyImageContainer">
+            <img src="https://img.freepik.com/premium-photo/nature-wallpaper-beautiful-nature-wallpaper-4k-nature-wallpapers-hd-nature-wallpaper-green-nature_722194-205.jpg?w=2000" alt="Story Image" class="story-image" id="storyImage">
+            <div class="text-overlay" id="textOverlay">Your Text Here</div>
+            <div class="story-controls">
+                <p id="storyTime">00:00</p>
+                <i class="fas fa-volume-up" id="volumeControl"></i>
+            </div>
+        </div>
+        <div class="comment-section">
+            <textarea id="commentInput" placeholder="Add a comment..."></textarea>
+            <button id="commentButton">Post</button>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+{% block scripts %}
+<script>
+    const images = [
+        "https://img.freepik.com/premium-photo/nature-wallpaper-beautiful-nature-wallpaper-4k-nature-wallpapers-hd-nature-wallpaper-green-nature_722194-205.jpg?w=2000",
+        "https://thewowstyle.com/wp-content/uploads/2015/01/nature-images-6.jpg",
+        "https://img.freepik.com/premium-photo/nature-wallpaper-beautiful-nature-wallpaper-4k-nature-wallpapers-hd-nature-wallpaper-green-nature_722194-205.jpg?w=2000"
+    ];
+
+    let currentIndex = 0;
+
+    const storyImage = document.getElementById('storyImage');
+    const progress = document.getElementById('progress');
+    const totalImages = images.length;
+
+    function updateImage() {
+        storyImage.src = images[currentIndex];
+        updateProgress();
+    }
+
+    function updateProgress() {
+        const progressPercentage = ((currentIndex + 1) / totalImages) * 100;
+        progress.style.width = `${progressPercentage}%`;
+    }
+
+    document.getElementById('storyImageContainer').addEventListener('click', (e) => {
+        const containerWidth = e.currentTarget.offsetWidth;
+        const clickX = e.clientX - e.currentTarget.getBoundingClientRect().left;
+
+        if (clickX < containerWidth / 2) {
+            // Clicked on the left side
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        } else {
+            // Clicked on the right side
+            currentIndex = (currentIndex + 1) % totalImages;
+        }
+        updateImage();
+    });
+
+    document.getElementById('commentButton').addEventListener('click', () => {
+        const commentInput = document.getElementById('commentInput');
+        const comment = commentInput.value.trim();
+        if (comment) {
+            alert(`Comment posted: ${comment}`);
+            commentInput.value = ''; // Clear the input after posting
+        }
+    });
+
+    updateImage(); // Initial call to set the first image
+</script>     
+{% endblock scripts %}
+
+
+
