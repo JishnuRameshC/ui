@@ -1,5 +1,6 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "shared/account_base.html" %}
+
+{% block style %}
 <style>
     .custom-container {
         background-color: #f8d5e0;
@@ -40,6 +41,9 @@
         margin-left: 10px;
     }
 </style>
+
+{% endblock style%}
+{% block content %}
 <div class="custom-container container-fluid">
 <div class="container ">
     <form>
