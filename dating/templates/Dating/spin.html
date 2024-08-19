@@ -1,4 +1,4 @@
-{% extends 'shared/base.html' %}
+{% extends 'shared/account_base.html' %}
 
 {% block meta %}
 <title>Spin Page</title>
@@ -105,6 +105,11 @@
 
 {% block content %}
 <div class="container">
+    <!-- Back Button -->
+    <button class="back-button">
+        <i class="fas fa-arrow-left"></i>
+    </button>
+
     <div class="profile-info">
         <p>1 km near you</p>
         <img src="a1.jpg" alt="Profile Picture" class="profile-pic">
@@ -124,7 +129,6 @@
             <circle cx="50" cy="50" r="45" stroke="url(#grad1)" stroke-width="3" fill="none" />
             <circle cx="50" cy="50" r="55" stroke="url(#grad1)" stroke-width="3" fill="none" />
             <circle cx="50" cy="50" r="65" stroke="url(#grad1)" stroke-width="3" fill="none" />
-            
         </svg>
     </div>
     <div class="spin-button-container">
@@ -149,6 +153,10 @@
             svgElement.classList.remove('spin-animation');
         }
     }
-</script>    
+
+</script>
+<!-- Font Awesome CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>  
 {% endblock scripts %}
+
 

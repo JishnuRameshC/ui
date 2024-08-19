@@ -80,42 +80,45 @@ class Page6View(TemplateView):
 class Page7View(TemplateView):
     template_name = 'Dating/page7.html'
 
+class SpinWheelView(TemplateView):
+    template_name = 'dating/spin.html'
+
 # UserProfileFlow
 class ChangePasswordView(TemplateView):
-    template_name = 'User_profile_flow\change_password.html'
+    template_name = 'User_profile_flow/change_password.html'
 
 
 class ContactedView(TemplateView):
-    template_name = 'User_profile_flow\contacted.html'
+    template_name = 'User_profile_flow/contacted.html'
 
 
 class EditMyProfileView(TemplateView):  
-    template_name = 'User_profile_flow\edit_profile.html'
+    template_name = 'User_profile_flow/edit_profile.html'
 
 class MessageView(TemplateView):    
-    template_name = 'User_profile_flow\message.html'
+    template_name = 'User_profile_flow/message.html'
 
 
 class SettingsView(TemplateView):   
-    template_name = 'User_profile_flow\settings.html'
+    template_name = 'User_profile_flow/settings.html'
 
 
 class StoryView(TemplateView):    
-    template_name = 'User_profile_flow\story.html'
+    template_name = 'User_profile_flow/story.html'
 
 
 class UpdateViewProfile(TemplateView):    
-    template_name = 'User_profile_flow\update_profile.html'
+    template_name = 'User_profile_flow/update_profile.html'
 
 
 class UpdateViewStory(TemplateView):    
-    template_name = 'User_profile_flow\update_story.html'   
+    template_name = 'User_profile_flow/update_story.html'   
 
 
 class UserProfile(TemplateView):    
-    template_name = 'User_profile_flow\user_profile.html'
+    template_name = 'User_profile_flow/user_profile.html'
 
 
 class ShortlistedView(TemplateView):    
-    template_name = 'User_profile_flow\shortlist.html'
+    template_name = 'User_profile_flow/shortlist.html'
 

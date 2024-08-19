@@ -2,6 +2,7 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
+  /* background-color: #4B164C; */
 }
 .top-navbar {
   background-color: #5a2d82; 
@@ -580,3 +581,4 @@ header {
         height: 0px;
     } */
 }
+
