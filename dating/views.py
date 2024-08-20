@@ -2,13 +2,11 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 # Create your views here.
-
 def TestView(request):
     return render(request, 'index.html')
 
 
 # SignUp
-
 class SignupView(TemplateView):
     template_name='account/signup.html'
 
@@ -50,8 +48,8 @@ class PaymentMethodsView(TemplateView):
 class AddPaymentMethodsView(TemplateView):
     template_name = 'payment/add_payment.html'
 
-# Dating 
 
+# Dating 
 class FirstView(TemplateView):
     template_name = 'test.html'
 
@@ -59,29 +57,38 @@ class FirstView(TemplateView):
 class DiscoveryPageView(TemplateView):
     template_name = 'Dating/discover.html'
 
+
 class HomePageview(TemplateView):
     template_name = 'Dating/home.html'
+
 
 class QualificationPageView(TemplateView):
     template_name = 'Dating/qualification.html'
 
+
 class LocationPageView(TemplateView):
     template_name = 'Dating/location.html'
+
 
 class DesignationView(TemplateView):
     template_name = 'Dating/designation.html'
 
+
 class MatchesView(TemplateView):
     template_name = 'Dating/matches.html'
 
-class Page6View(TemplateView):
-    template_name = 'Dating/page6.html'
+
+class ViewedMyProfileView(TemplateView):
+    template_name = 'Dating/viewed_my_profile.html'
+
 
 class Page7View(TemplateView):
     template_name = 'Dating/page7.html'
 
+
 class SpinWheelView(TemplateView):
     template_name = 'dating/spin.html'
+
 
 # UserProfileFlow
 class ChangePasswordView(TemplateView):
@@ -93,7 +100,8 @@ class ContactedView(TemplateView):
 
 
 class EditMyProfileView(TemplateView):  
-    template_name = 'User_profile_flow/edit_profile.html'
+    template_name = 'User_profile_flow/edit_my_profile.html'
+
 
 class MessageView(TemplateView):    
     template_name = 'User_profile_flow/message.html'
@@ -102,6 +110,9 @@ class MessageView(TemplateView):
 class SettingsView(TemplateView):   
     template_name = 'User_profile_flow/settings.html'
 
+
+class ShortlistView(TemplateView):    
+    template_name = 'User_profile_flow/shortlist.html'
 
 class StoryView(TemplateView):    
     template_name = 'User_profile_flow/story.html'
@@ -112,7 +123,7 @@ class UpdateViewProfile(TemplateView):
 
 
 class UpdateViewStory(TemplateView):    
-    template_name = 'User_profile_flow/update_story.html'   
+    template_name = 'User_profile_flow/upgrade_to_view_story.html'  
 
 
 class UserProfile(TemplateView):    

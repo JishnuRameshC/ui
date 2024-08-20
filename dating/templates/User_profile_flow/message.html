@@ -14,7 +14,7 @@
       padding: 0;
     }
     
-    .main-container {
+    .m-main-container {
       max-width: 450px;
       margin: 0 auto;
       padding-bottom: 60px; /* Add padding to prevent overlap with the bottom-nav */
@@ -23,13 +23,13 @@
       flex-direction: column;
     }
     
-    .top-navbar {
+    .m-top-navbar {
       padding: 20px 0;
       text-align: center;
       position: relative;
     }
     
-    .top-navbar .back-button {
+    .m-top-navbar .back-button {
       position: absolute;
       left: 15px;
       top: 50%;
@@ -38,7 +38,7 @@
       font-size: 24px;
     }
     
-    .top-navbar .page-title {
+    .m-top-navbar .page-title {
       font-size: 24px;
       margin: 0;
       font-weight: bold;
@@ -158,12 +158,12 @@
 {% endblock style %}
 
 {% block content %}
-<div class="main-container">
-    <div class="top-navbar">
+<div class="m-main-container">
+    <div class="m-top-navbar">
       <a href="#" class="back-button"><i class="fas fa-chevron-left"></i></a>
       <h1 class="page-title">Messages</h1>
     </div>
-    <div class="recent-matches">
+    <div class="m-recent-matches">
       <h2>Recent Matches</h2>
       <div class="match-avatars">
         <div class="match-avatar">

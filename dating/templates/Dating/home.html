@@ -237,20 +237,20 @@
           <div class="d-flex overflow-auto">
             <div class="story me-3">
               <div class="story-img" data-bs-toggle="modal" data-bs-target="#storyModal" onclick="showStory('a1.jpg')">
-                <img src="a1.jpg" alt="My Story" class="img-fluid" />
+                <img src="{% static 'images/image.jpg' %}" alt="My Story" class="img-fluid" />
                 <button class="add-story-btn" onclick="addStory(event)"><i class="fas fa-plus"></i></button>
               </div>
               <p>My Story</p>
             </div>
             <div class="story me-3">
-              <div class="story-img" data-bs-toggle="modal" data-bs-target="#storyModal" onclick="showStory('story1.jpg')">
-                <img src="story1.jpg" alt="Selena" class="img-fluid" />
+              <div class="story-img" data-bs-toggle="modal" data-bs-target="#storyModal" onclick="showStory('{% static 'images/image.jpg' %}')">
+                <img src="{% static 'images/image.jpg' %}" alt="Selena" class="img-fluid" />
               </div>
               <p>Selena</p>
             </div>
             <div class="story me-3">
               <div class="story-img" data-bs-toggle="modal" data-bs-target="#storyModal" onclick="showStory('story2.jpg')">
-                <img src="story2.jpg" alt="Clara" class="img-fluid" />
+                <img src="{% static 'images/image.jpg' %}" alt="Clara" class="img-fluid" />
               </div>
               <p>Clara</p>
             </div>
@@ -281,7 +281,7 @@
     <div class="row mt-4">
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="profile-card" data-location="hyderabad" data-designation="developer" data-qualification="bachelor">
-          <img src="a1.jpg" alt="Profile 1" />
+          <img src="{% static 'images/image.jpg' %}" alt="Profile 1" />
           <div class="gradient-overlay"></div>
           <div class="profile-info">
             <div class="profile-name">John Doe</div>
@@ -296,7 +296,7 @@
       </div>
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="profile-card" data-location="bangalore" data-designation="manager" data-qualification="master">
-          <img src="a2.jpg" alt="Profile 2" />
+          <img src="{% static 'images/image.jpg' %}" alt="Profile 2" />
           <div class="gradient-overlay"></div>
           <div class="profile-info">
             <div class="profile-name">Jane Smith</div>
@@ -311,7 +311,7 @@
       </div>
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="profile-card" data-location="hyderabad" data-designation="manager" data-qualification="bachelor">
-          <img src="a3.jpg" alt="Profile 3" />
+          <img src="{% static 'images/image.jpg' %}" alt="Profile 3" />
           <div class="gradient-overlay"></div>
           <div class="profile-info">
             <div class="profile-name">David Lee</div>
@@ -326,7 +326,7 @@
       </div>
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="profile-card" data-location="bangalore" data-designation="developer" data-qualification="master">
-          <img src="a4.jpg" alt="Profile 4" />
+          <img src="{% static 'images/image.jpg' %}" alt="Profile 4" />
           <div class="gradient-overlay"></div>
           <div class="profile-info">
             <div class="profile-name">Emily Clark</div>

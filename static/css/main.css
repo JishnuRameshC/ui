@@ -1,7 +1,7 @@
 /* navbar css  */ 
 body {
   font-family: Arial, sans-serif;
-  background-color: #ffffff;
+  background-color: #6c0571;
   /* background-color: #4B164C; */
 }
 .top-navbar {
@@ -49,14 +49,14 @@ body {
         font-size: 12px;
         color: #777;
       }
-      .main-content {
+      /* .main-content {
         padding: 20px;
         margin-top: 10px;
         border-radius: 20px;
         background-color: white;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         margin-bottom: 20px;
-      }
+      } */
 
       .list-group-item {
         border-left: none;
@@ -130,6 +130,7 @@ body {
       @media (max-width: 767px) {
         .bottom-bar {
           flex-direction: row;
+          height: 80px;
         }
         .main-content {
           padding-bottom: 60px; /* Add padding to accommodate the bottom navbar */

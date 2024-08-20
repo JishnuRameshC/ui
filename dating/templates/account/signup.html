@@ -1,7 +1,6 @@
 {% extends "shared/account_base.html" %}
 
 {% block style %}
-{% endblock style %}
 <style>
     .container-fluid {
         background-color: #f8d5e0;
@@ -40,6 +39,8 @@
         margin-left: 10px;
     }
 </style>
+{% endblock style %}
+
 {% block content %}
 
 <div class="container-fluid">
@@ -79,8 +80,8 @@
             <button type="submit" class="btn btn-custom btn-primary-custom mb-2 mt-1 ">Register</button>
             <button type="button" class="btn btn-custom btn-secondary-custom mb-2 ">Social media Login</button>
         </div>
-        <p class="text-center">Already have an account? <a href="{% url "login" %}" class="link-custom">Log In</a></p>
-        <a href="{% url "profession" %}">profession</a>
+        <p class="text-center">Already have an account? <a href="{% url 'login' %}" class="link-custom">Log In</a></p>
+        <a href="{% url 'profession' %}">profession</a>
     </form>
 </div>
 </div>

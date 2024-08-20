@@ -5,14 +5,13 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     # path("", views.TestView, name="test"),
-
-
     # account
     path("login", views.LoginView.as_view(), name="login"),
     path("signup", views.SignupView.as_view(), name="signup"),
     path("profession", views.ProfessionView.as_view(), name="profession"),
     path("rel_goal", views.Rel_GoalView.as_view(), name="rel_goal"),
     path("interest", views.InterestView.as_view(), name="interest"),
+    
     path("create_group", views.CreateGroupView.as_view(), name="create_group"),
     path("groups", views.GroupListView.as_view(), name="groups"),
     path("subscription_plan", views.SubscriptionPlanView.as_view(), name="subscription_plan"),
@@ -26,7 +25,7 @@ urlpatterns = [
     path('location/',views.LocationPageView.as_view(),name='location'),
     path('designation/',views.DesignationView.as_view(),name="designation"),
     path("matches/",views.MatchesView.as_view()),
-    path("",views.Page6View.as_view()),
+    path("viewed_my_profile/",views.ViewedMyProfileView.as_view()),
     path("hjbj",views.Page7View.as_view()),
     path('spin/',views.SpinWheelView.as_view(),name="spin"),
 
@@ -40,7 +39,6 @@ urlpatterns = [
     path("update_story",views.UpdateViewStory.as_view()),
     path("user_profile",views.UserProfile.as_view()),
     path("shortlist",views.ShortlistedView.as_view()),
-
 ]
 
 
